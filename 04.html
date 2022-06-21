@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .ball{position: absolute;
+            top: 100px;left: 100px;
+            width: 50px;height: 50px;
+            border-radius: 50%;
+            background-color: chartreuse;}
+    </style>
+    <script>
+
+        window.addEventListener('load',() => {
+            const body = document.querySelector('body');
+            const ball = document.querySelector('.ball');
+
+            //노드의 속성
+            let x = ball.offsetLeft;
+            //console.log("x: "+x)
+            let y = ball.offsetTop;
+            //console.log("y:" +y)
+
+            let w = ball.offsetWidth;
+            //console.log("w: "+w)
+            let h = ball.offsetHight;
+            //console.log("h: "+h)
+
+            body.addEventListener('keydown',function(e){
+                // console.log("e.keyCode;" + e.keyCode);
+
+                if(e.keyCode ==39){
+                    if(x <400){
+                        x+= 20;
+                    }
+                }  // right Keyboard
+
+                if(e.keyCode ==37){
+                    if(x > 40){
+                        x-=20;
+                    }
+                }  // left Keyboard
+
+                if(e.keyCode ==38){
+                    if(y > 120){
+                        y-= 20;
+                    }
+
+                }  // ip Keyboard
+
+                if(e.keyCode ==40){
+                    if(y < 400){
+                        y += 20;
+                    }
+                }  //  down Keyboard
+
+                ball.style.left =x +"px"
+                ball.style.top = y + "px"
+            })
+
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="ball"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        body{
+            padding: 50px;
+        }
+        .ball{position: absolute;
+            top: 120px;left: 40px;
+            width: 50px;height: 50px;
+            border-radius: 50%;
+            background-color: chartreuse;}
+    </style>
+    <script>
+        window.addEventListener('load',function(){
+            const queue = document.querySelector("#queue")
+            const queue_r = document.querySelector("#queue_r")
+            const ball = document.querySelector('.ball')
+            let x = ball.offsetLeft;
+            let targetx = 400;
+            let rtargetx = 40;
+
+            queue.addEventListener('click',function(){
+            animate1(ball,x,targetx)//함수 호출
+        })
+    })
+        function animate1(target,startx,targetx){//구조분해할당(데이터베이스 사용)
+            const timer = setInterval(function(){
+                if(startx < targetx){
+                    startx += 10;
+                }else{//390
+                    startx = targetx; //400
+                    clearInterval(timer)
+                }
+                target.style.left = startx + 'px';
+            },10)
+        }
+
+        //     queue.addEventListener('click',function(){
+        //         const timer = setInterval(function(){
+        //         //조건
+        //         if(x < targetx){
+        //             x = x + 10;
+        //         }else{//390
+        //             x = targetx; //400
+        //             clearInterval(timer)
+        //         }
+        //         ball.style.left = x + 'px';
+        //         },10)
+        //     })
+        
+        //    queue2.addEventListener('click',function(){
+        //    if(x== 400){
+        //         const timer2 = setInterval(function(){
+        //             if(x > rtargetx){
+        //                 x = x - 10;
+        //             }else{
+        //                 x = rtargetx;
+        //                 clearInterval(timer2)
+        //             }
+        //             ball.style.left = x + 'px';
+        //         },10)
+        //     }
+        //     })
+
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <button id="queue">animate queue</button>
+        <button id="queue2">akdfjlksdf</button>
+        <div class="ball"></div>
+    </div>
+</body>
+</html>

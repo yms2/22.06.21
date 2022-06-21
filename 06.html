@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .container{
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-top: 35px;
+            width: 600px;height: 200px;
+            overflow: hidden;
+        }
+        button{margin-left: 50px; padding: 5px 15px;}
+        .galley{
+            width: 600px; height: 200px;
+            list-style: none;
+            position: absolute;
+            left: -600px;top: 40px;
+            transition: left 0.5s ease-in-out;
+        }
+        .galley li{
+            float: left;
+            width: 200px;height: 200px;
+            opacity: 0.4;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+        .galley li:nth-child(1){background-color: yellowgreen;}
+        .galley li:nth-child(2){background-color: rgb(45, 68, 198);}
+        .galley li:nth-child(3){background-color: rgb(188, 65, 94);}
+
+
+        .galley.active{
+            left:0;
+        }
+        .galley li.over{
+            opacity: 1;
+        }
+    </style>
+    <script>
+        'use strict'
+
+        window.addEventListener('load',() => {
+        const tab = document.querySelector('#tab');
+        const slide = document.querySelector('.galley');
+        const image = document.querySelectorAll('.galley li');
+        let status = "closed";//상태값
+
+        tab.addEventListener('click',function(e){
+            if(status=="closed"){
+            status="open";
+            e.target.innerText ='galley close'
+            slide.classList.add('active')
+            }else if(status == "open"){
+            status="closed"
+            e.target.innerText = 'galley open'
+            slide.classList.remove('active')
+            }
+        })
+        //NodeList OBJECt
+        for(let i = 0; i < image.length; i++){
+            image[i].addEventListener('mouseenter',function(e){
+                e.target.classList.add('over');
+            image[i].addEventListener('mouseleave',function(e){
+                e.target.classList.add('over');
+            })
+            })
+        }
+    })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <button id="tab">galley open</button>
+        <ul class="galley">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+</html>
